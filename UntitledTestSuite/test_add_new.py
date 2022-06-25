@@ -50,7 +50,7 @@ class TestAddNew(unittest.TestCase):
         wd.find_element_by_link_text("home page").click()
 
     def create_new_contacts(self, wd, contacts):
-        # init contacts creation
+        # init contacts  creation
         wd.find_element_by_name("firstname").click()
         # fill contacts form
         wd.find_element_by_name("firstname").clear()
