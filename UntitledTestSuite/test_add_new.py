@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
@@ -23,9 +21,9 @@ class TestAddNew(unittest.TestCase):
         self.login(wd, username= "admin", password= "secret")
         self.open_add_new(wd)
         self.create_new_contacts(wd, Contact(firstname= "wrtertfe", middlename= "swdwdef", lastname= "efwafrar", nickname= "rfarfwefa", title= "gbfshsrt", company= "rragsrehgrt",
-                                 address= "sdgthebtbgs", home= "dfbsthet", mobile= "dfvrvgr", work= "scecdc", fax= "ececcsc", email= "scwferfrcd", email2= "scweferv",
-                                 email3= "cdevrvdc", homepage= "scefefcs",bday= "11", bmonth= "August", byear= "5655", aday= "13", amonth= "September", ayear= "677", address2= "uykyg",
-                                 phone2= "yglugyg", notes= "iblhbhjvkj"))
+                                             address= "sdgthebtbgs", home_number="dfbsthet", mobile_number="dfvrvgr", work_number="scecdc", fax="ececcsc", email="scwferfrcd", email2="scweferv",
+                                             email3= "cdevrvdc", homepage= "scefefcs", bday= "11", bmonth= "August", byear= "5655", aday= "13", amonth= "September", ayear= "677", address2= "uykyg",
+                                             phone2= "yglugyg", notes= "iblhbhjvkj"))
         self.return_to_home_page(wd)
         self.logout(wd)
 
@@ -37,9 +35,9 @@ class TestAddNew(unittest.TestCase):
         self.login(wd, username= "admin", password= "secret")
         self.open_add_new(wd)
         self.create_new_contacts(wd, Contact(firstname= "", middlename= "", lastname= "", nickname= "", title= "", company= "",
-                                 address= "", home= "", mobile= "", work= "", fax= "", email= "", email2= "",
-                                 email3= "", homepage= "",bday= "11", bmonth= "August", byear= "5655", aday= "13", amonth= "September", ayear= "677", address2= "",
-                                 phone2= "", notes= ""))
+                                             address= "", home_number="", mobile_number="", work_number="", fax="", email="", email2="",
+                                             email3= "", homepage= "", bday= "11", bmonth= "August", byear= "5655", aday= "13", amonth= "September", ayear= "677", address2= "",
+                                             phone2= "", notes= ""))
         self.return_to_home_page(wd)
         self.logout(wd)
 
@@ -75,13 +73,13 @@ class TestAddNew(unittest.TestCase):
         wd.find_element_by_name("address").send_keys(contacts.address)
         wd.find_element_by_name("home").click()
         wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(contacts.home)
+        wd.find_element_by_name("home").send_keys(contacts.home_number)
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys(contacts.mobile)
+        wd.find_element_by_name("mobile").send_keys(contacts.mobile_number)
         wd.find_element_by_name("work").click()
         wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys(contacts.work)
+        wd.find_element_by_name("work").send_keys(contacts.work_number)
         wd.find_element_by_name("fax").click()
         wd.find_element_by_name("fax").clear()
         wd.find_element_by_name("fax").send_keys(contacts.fax)
