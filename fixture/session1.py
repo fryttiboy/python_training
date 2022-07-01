@@ -1,6 +1,6 @@
 
 
-class SessionHelper:
+class Session1Helper:
 
     def __init__(self, app):
         self.app = app

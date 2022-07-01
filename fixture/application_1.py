@@ -1,14 +1,16 @@
 from selenium import webdriver
-from fixture.session import SessionHelper
-from fixture.group import GroupHelper
+from fixture.session1 import Session1Helper
+from fixture.contacts import ContactsHelper
 
 
-class Application:
+class Application1:
+
     def __init__(self):
         self.wd = webdriver.Chrome()
+
         self.wd.implicitly_wait(30)
-        self.session = SessionHelper(self)
-        self.group = GroupHelper(self)
+        self.session1 = Session1Helper(self)
+        self.contacts = ContactsHelper(self)
 
     def open_home_page(self):
         wd = self.wd
@@ -16,4 +18,3 @@ class Application:
 
     def destroy(self):
         self.wd.quit()
-
