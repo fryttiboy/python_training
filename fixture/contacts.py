@@ -9,7 +9,6 @@ class ContactsHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
 
-
     def create_new(self, contacts):
         wd = self.app.wd
         self.open_add_new()
