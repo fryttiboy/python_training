@@ -19,36 +19,37 @@ class ContactsHelper:
 
     def fill_contact_form(self, contacts):
         wd = self.app.wd
-        self.change_fieled_value("firstname", contacts)
-        self.change_fieled_value("middlename", contacts)
-        self.change_fieled_value("lastname", contacts)
-        self.change_fieled_value("nickname", contacts)
-        self.change_fieled_value("title", contacts)
-        self.change_fieled_value("company", contacts)
-        self.change_fieled_value("address", contacts)
-        self.change_fieled_value("home", contacts)
-        self.change_fieled_value("mobile", contacts)
-        self.change_fieled_value("work", contacts)
-        self.change_fieled_value("fax", contacts)
-        self.change_fieled_value("email", contacts)
-        self.change_fieled_value("email2", contacts)
-        self.change_fieled_value("email3", contacts)
-        self.change_fieled_value("homepage", contacts)
-        self.change_fieled_value("bday", contacts)
-        self.change_fieled_value("bmonth", contacts)
-        self.change_fieled_value("byear", contacts)
-        self.change_fieled_value("aday", contacts)
-        self.change_fieled_value("amonth", contacts)
-        self.change_fieled_value("ayear", contacts)
-        self.change_fieled_value("address2", contacts)
-        self.change_fieled_value("phone2", contacts)
-        self.change_fieled_value("notes", contacts)
+        self.change_fieled_value("firstname", contacts.firstname)
+        self.change_fieled_value("middlename", contacts.middlename)
+        self.change_fieled_value("lastname", contacts.lastname)
+        self.change_fieled_value("nickname", contacts.nickname)
+        self.change_fieled_value("title", contacts.title)
+        self.change_fieled_value("company", contacts.company)
+        self.change_fieled_value("address", contacts.address)
+        self.change_fieled_value("home", contacts.home)
+        self.change_fieled_value("mobile", contacts.mobile)
+        self.change_fieled_value("work", contacts.work)
+        self.change_fieled_value("fax", contacts.fax)
+        self.change_fieled_value("email", contacts.email)
+        self.change_fieled_value("email2", contacts.email2)
+        self.change_fieled_value("email3", contacts.email3)
+        self.change_fieled_value("homepage", contacts.homepage)
+        self.change_fieled_value("bday", contacts.bday)
+        self.change_fieled_value("bmonth", contacts.bmonth)
+        self.change_fieled_value("byear", contacts.byear)
+        self.change_fieled_value("aday", contacts.aday)
+        self.change_fieled_value("amonth", contacts.amonth)
+        self.change_fieled_value("ayear", contacts.ayear)
+        self.change_fieled_value("address2", contacts.address2)
+        self.change_fieled_value("phone2", contacts.phone2)
+        self.change_fieled_value("notes", contacts.notes)
 
     def change_fieled_value(self, field_name, text):
         wd = self.app.wd
-        if text.firstname is not None:
+        if text is not None:
+            wd.find_element_by_name(field_name).click()
             wd.find_element_by_name(field_name).clear()
-            wd.find_element_by_name(field_name).send_keys(text.firstname)
+            wd.find_element_by_name(field_name).send_keys(text)
 
     def delete_first_contact(self):
         wd = self.app.wd
@@ -56,17 +57,15 @@ class ContactsHelper:
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
-        self.return_to_home_page()
 
-    def modify_first_contact(self, new_contact_data):
+    def modify_first_contact(self, new_contacts_data):
         wd = self.app.wd
         self.app.open_home_page()
         # open modification form
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
-        self.fill_contact_form(new_contact_data)
+        self.fill_contact_form(new_contacts_data)
         wd.find_element_by_name("update").click()
         self.return_to_home_page()
-
 
     def return_to_home_page(self):
         wd = self.app.wd
