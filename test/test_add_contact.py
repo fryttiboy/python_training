@@ -16,3 +16,4 @@ def test_add_null_contact(app):
                                     phone2="", notes=""))
 
 
+

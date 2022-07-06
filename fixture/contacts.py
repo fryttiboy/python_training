@@ -1,4 +1,4 @@
-
+from selenium.webdriver.support.ui import Select
 
 
 class ContactsHelper:
@@ -27,19 +27,22 @@ class ContactsHelper:
         self.change_fieled_value("title", contacts.title)
         self.change_fieled_value("company", contacts.company)
         self.change_fieled_value("address", contacts.address)
-        self.change_fieled_value("home_number", contacts.home_number)
-        self.change_fieled_value("mobile_number", contacts.mobile_number)
-        self.change_fieled_value("work_number", contacts.work_number)
+        self.change_fieled_value("home", contacts.home_number)
+        self.change_fieled_value("mobile", contacts.mobile_number)
+        self.change_fieled_value("work", contacts.work_number)
         self.change_fieled_value("fax", contacts.fax)
         self.change_fieled_value("email", contacts.email)
         self.change_fieled_value("email2", contacts.email2)
         self.change_fieled_value("email3", contacts.email3)
         self.change_fieled_value("homepage", contacts.homepage)
-        self.change_fieled_value("bday", contacts.bday)
-        self.change_fieled_value("bmonth", contacts.bmonth)
+        wd.find_element_by_name("bday").click()
+        Select(wd.find_element_by_name("bday")).select_by_visible_text(contacts.bday)
+        wd.find_element_by_name("bmonth").click()
+        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contacts.bmonth)
         self.change_fieled_value("byear", contacts.byear)
-        self.change_fieled_value("aday", contacts.aday)
-        self.change_fieled_value("amonth", contacts.amonth)
+        Select(wd.find_element_by_name("aday")).select_by_visible_text(contacts.aday)
+        wd.find_element_by_name("amonth").click()
+        Select(wd.find_element_by_name("amonth")).select_by_visible_text(contacts.amonth)
         self.change_fieled_value("ayear", contacts.ayear)
         self.change_fieled_value("address2", contacts.address2)
         self.change_fieled_value("phone2", contacts.phone2)
