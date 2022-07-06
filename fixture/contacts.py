@@ -35,14 +35,11 @@ class ContactsHelper:
         self.change_fieled_value("email2", contacts.email2)
         self.change_fieled_value("email3", contacts.email3)
         self.change_fieled_value("homepage", contacts.homepage)
-        wd.find_element_by_name("bday").click()
-        Select(wd.find_element_by_name("bday")).select_by_visible_text(contacts.bday)
-        wd.find_element_by_name("bmonth").click()
-        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contacts.bmonth)
+        self.change_fieled1_value("bday", contacts.bday)
+        self.change_fieled1_value("bmonth", contacts.bmonth)
         self.change_fieled_value("byear", contacts.byear)
-        Select(wd.find_element_by_name("aday")).select_by_visible_text(contacts.aday)
-        wd.find_element_by_name("amonth").click()
-        Select(wd.find_element_by_name("amonth")).select_by_visible_text(contacts.amonth)
+        self.change_fieled1_value("aday", contacts.aday)
+        self.change_fieled1_value("amonth", contacts.amonth)
         self.change_fieled_value("ayear", contacts.ayear)
         self.change_fieled_value("address2", contacts.address2)
         self.change_fieled_value("phone2", contacts.phone2)
@@ -54,6 +51,13 @@ class ContactsHelper:
             wd.find_element_by_name(field_name).click()
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
+
+    def change_fieled1_value(self, field_name, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(field_name).click()
+            Select(wd.find_element_by_name(field_name)).select_by_visible_text(text)
+            wd.find_element_by_name(field_name).click()
 
     def delete_first_contact(self):
         wd = self.app.wd

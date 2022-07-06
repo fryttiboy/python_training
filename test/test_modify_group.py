@@ -10,3 +10,4 @@ def test_modify_group_header(app):
     app.group.modify_first_group(Group(header="New header"))
 
 
+
