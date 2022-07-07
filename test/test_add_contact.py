@@ -9,6 +9,7 @@ def test_add_contact(app):
                                     phone2="yglugyg", notes= "iblhbhjvkj"))
 
 
+
 def test_add_null_contact(app):
     app.contacts.create_new(Contact(firstname="", middlename="", lastname="", nickname="", title="", company="",
                                     address="", home_number="", mobile_number="", work_number="", fax="", email="", email2="",

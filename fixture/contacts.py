@@ -79,3 +79,4 @@ class ContactsHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("home page").click()
 
+
