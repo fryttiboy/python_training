@@ -7,6 +7,7 @@ def test_add_contact(app):
                                     address= "sdgthebtbgs", home_number="dfbsthet", mobile_number="dfvrvgr", work_number="scecdc", fax="ececcsc", email="scwferfrcd", email2="scweferv",
                                     email3= "cdevrvdc", homepage= "scefefcs", bday= "11", bmonth= "August", byear= "5655", aday= "13", amonth= "September", ayear= "677", address2= "uykyg",
                                     phone2="yglugyg", notes= "iblhbhjvkj"))
+    app.session.logout()
 
 
 def test_add_null_contact(app):
