@@ -15,7 +15,3 @@ def test_add_null_contact(app):
                                     address="", home_number="", mobile_number="", work_number="", fax="", email="", email2="",
                                     email3="", homepage="", bday="11", bmonth= "August", byear= "5655", aday= "13", amonth= "September", ayear= "677", address2= "",
                                     phone2="", notes=""))
-
-
-
-
