@@ -2,6 +2,7 @@
 from model.contacts import Contact
 
 
+
 def test_add_contact(app):
     old_contacts = app.contacts.get_contact_list()
     app.contacts.create_new(Contact(firstname="wrtertfe", middlename="swdwdef", lastname="efwafrar", nickname="rfarfwefa", title="gbfshsrt", company="rragsrehgrt",

@@ -20,6 +20,7 @@ class ContactsHelper:
         # submit contact creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
+
     def fill_contact_form(self, contacts):
         wd = self.app.wd
         self.change_fieled_value("firstname", contacts.firstname)
@@ -90,9 +91,9 @@ class ContactsHelper:
         wd = self.app.wd
         self.app.open_home_page()
         contacts = []
-        for element in wd.find_elements_by_css_selector("td.center"):
-            text = element.text
+        for element in wd.find_elements_by_name("entry"):
+            cells = element.find_elements_by_tag_name("td")
             id = element.find_element_by_name("selected[]").get_attribute("value")
-            contacts.append(Contact(firstname=text, id=id))
+            contacts.append(Contact(firstname=cells, id=id))
         return contacts
 
