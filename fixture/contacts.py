@@ -101,8 +101,7 @@ class ContactsHelper:
                 cells = element.find_elements_by_tag_name("td")
                 id = element.find_element_by_name("selected[]").get_attribute("value")
                 third_cell = cells[2]
-                second_cell = cells[1]
-                self.contact_cache.append(Contact(id=id, middlename=second_cell.text, firstname=third_cell.text))
+                self.contact_cache.append(Contact(id=id, firstname=third_cell.text))
 
         return list(self.contact_cache)
 
