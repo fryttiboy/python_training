@@ -113,16 +113,16 @@ class ContactsHelper:
             self.contact_cache = []
             for element in wd.find_elements_by_name("entry"):
                 cells = element.find_elements_by_tag_name("td")
-                firstname = cells[1].text
-                lastname = cells[2]
+                firstname = cells[2].text
+                lastname = cells[1]
                 id = cells[0].find_element_by_name("selected[]").get_attribute("value")
                 all_phones = cells[5].text.splitlines()
                 self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id,
                                                   home_number=all_phones[0], mobile_number=all_phones[1],
-                                                  work_number=all_phones[2], fax=all_phones[3]))
+                                                  work_number=all_phones[2], phone2=all_phones[3]))
         return list(self.contact_cache)
 
-    def contact_info_from_edit_page(self, index):
+    def get_contact_info_from_edit_page(self, index):
         wd = self.app.wd
         self.open_contact_to_edit_by_index(index)
         id = wd.find_element_by_name("id").get_attribute("value")
@@ -131,19 +131,19 @@ class ContactsHelper:
         home_number = wd.find_element_by_name("home").get_attribute("value")
         mobile_number = wd.find_element_by_name("mobile").get_attribute("value")
         work_number = wd.find_element_by_name("work").get_attribute("value")
-        fax = wd.find_element_by_name("fax").get_attribute("value")
-        return Contact(firstname=firstname, lastname=lastname, home_number=home_number, mobile_number=mobile_number, work_number=work_number, fax=fax, id=id)
+        phone2 = wd.find_element_by_name("phone2").get_attribute("value")
+        return Contact(firstname=firstname, lastname=lastname, home_number=home_number, mobile_number=mobile_number, work_number=work_number, phone2=phone2, id=id)
 
     def open_contact_to_edit_by_index(self, index):
         wd = self.app.wd
         self.app.open_home_page()
-        element = wd.find_element_by_name("entry")[index]
-        cell = element.find_element_by_tag_name("td")[7]
+        raw = wd.find_elements_by_name("entry")[index]
+        cell = raw.find_elements_by_tag_name("td")[7]
         cell.find_element_by_tag_name("a").click()
 
     def open_contact_view_by_index(self, index):
         wd = self.app.wd
         self.app.open_home_page()
-        element = wd.find_element_by_name("entry")[index]
-        cell = element.find_element_by_tag_name("td")[6]
+        raw = wd.find_elements_by_name("entry")[index]
+        cell = raw.find_elements_by_tag_name("td")[6]
         cell.find_element_by_tag_name("a").click()
