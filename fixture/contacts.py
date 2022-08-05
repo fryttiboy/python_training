@@ -3,7 +3,7 @@ from model.contacts import Contact
 
 
 class ContactsHelper:
-    def init(self, app):
+    def __init__(self, app):
         self.app = app
 
     def open_add_new(self):
