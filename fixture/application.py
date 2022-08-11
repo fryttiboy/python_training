@@ -14,7 +14,6 @@ class Application:
             self.wd = webdriver.Ie()
         else:
             raise ValueError("Unrecognised browser %s" & browser)
-        self.wd = webdriver.Chrome()
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contacts = ContactsHelper(self)
