@@ -111,10 +111,10 @@ class ContactsHelper:
 
 
 
-    def modify_contact_by_id(self,id, contact):
+    def modify_contact_by_id(self,id,contact):
         wd = self.app.wd
         self.app.open_home_page()
-        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+        wd.find_element_by_css_selector("input[value='%s']" % id)
         # open modification form
         wd.find_elements_by_xpath("//img[@alt='Edit']").click()
         self.fill_contact_form(contact)
