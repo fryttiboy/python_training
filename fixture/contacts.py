@@ -191,3 +191,55 @@ class ContactsHelper:
         return Contact(home_number=home_number, mobile_number=mobile_number,
                        work_number=work_number, phone2=phone2)
 
+    def add_contact_to_group(self, group_name, contact_id):
+        wd = self.app.wd
+        self.open_add_new()
+        self.select_contact_by_id(contact_id)
+        wd.find_element_by_xpath(f"//select[@name='to_group']/option[. = '{group_name}']").click()
+        wd.find_element_by_name("add").click()
+
+
+
+
+    def get_info_from_contacts_list(self, contacts, key):
+        list = []
+        for item in contacts:
+            if key == 'emails':
+                list.append(item.all_mails_from_home_page)
+            elif key == 'phones':
+                list.append(item.all_phones_from_home_page)
+            elif key == 'lastname':
+                list.append(item.lastname)
+            elif key == 'firstname':
+                list.append(item.firstname)
+            elif key == 'address':
+                list.append(item.address)
+        return list
+
+    @staticmethod
+    def clear(s: str):
+        return re.sub("[() -]", "", s)
+
+    def merge_emails(self, contact):
+        return "\n".join(filter(lambda x: x != "",
+                                filter(lambda x: x is not None,
+                                       [contact.email, contact.email2, contact.email3])))
+
+    def merge_phones(self, contact):
+        return "\n".join(filter(lambda x: x != "",
+                                map(lambda x: ContactsHelper.clear(x),
+                                    filter(lambda x: x is not None,
+                                           [contact.home, contact.mobile,
+                                            contact.work, contact.phone2]))))
+
+    def merge_emails_from_db(self, contacts):
+        merged_users_email_list = []
+        for item in contacts:
+            merged_users_email_list.append(self.merge_emails(item))
+        return merged_users_email_list
+
+    def merge_phones_from_db(self, contacts):
+        merged_contacts_phone_list = []
+        for item in contacts:
+            merged_contacts_phone_list.append(self.merge_phones(item))
+        return merged_contacts_phone_list
