@@ -5,7 +5,7 @@ from  random import randrange
 
 def test_modify_contact_firstname(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
-        app.contact.create(Contact(firstname="Test_contact", middlename="", lastname="", nickname="", title="",
+        app.contacts.create_new(Contact(firstname="Test_contact", middlename="", lastname="", nickname="", title="",
                                    company="", address="", home_number="", mobile_number="", work_number="", fax="", email="",
                                    email2="", email3="", homepage="", bday="5", bmonth="July", byear="2022", aday="5",
                                    amonth="July", ayear="2022", address2="", phone2="", notes=""))
